@@ -33,8 +33,8 @@ exports.copy = {
 
   testUpdateWithCustomVersion: function (test) {
     var task = ctx.newTask(['myapp', 'update'], {
-      "manageFlags": {
-        "version": "1.0"
+      manageFlags: {
+        version: "1.0"
       }
     });
 
@@ -46,8 +46,8 @@ exports.copy = {
 
   testUpdateWithCustomApplication: function (test) {
     var task = ctx.newTask(['myapp', 'update'], {
-      "manageFlags": {
-        "application": "myapp"
+      manageFlags: {
+        application: "myapp"
       }
     });
 
@@ -59,7 +59,7 @@ exports.copy = {
 
   testUpdateAllBackends: function (test) {
     var task = ctx.newTask(['myapp', 'update'], {
-      "backend": true
+      backend: true
     });
 
     var result = task.execute(true);
@@ -70,8 +70,8 @@ exports.copy = {
 
   testUpdateSingleBackend: function (test) {
     var task = ctx.newTask(['myapp', 'update'], {
-      "backend": true,
-      "backendName": "crawler"
+      backend: true,
+      backendName: "crawler"
     });
 
     var result = task.execute(true);

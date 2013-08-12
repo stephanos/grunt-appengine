@@ -25,7 +25,7 @@ exports.copy = {
   testRunDevServerWithClearDatastore: function (test) {
     var task = ctx.newTask(['myapp', 'run'], {
       runFlags: {
-        "clear_datastore": "yes"
+        clear_datastore: "yes"
       }
     });
 
@@ -38,7 +38,7 @@ exports.copy = {
   testRunDevServerWithMail: function (test) {
     var task = ctx.newTask(['myapp', 'run'], {
       runFlags: {
-        "enable_sendmail": true
+        enable_sendmail: true
       }
     });
 
@@ -51,12 +51,23 @@ exports.copy = {
   testRunDevServerWithBackends: function (test) {
     var task = ctx.newTask(['myapp', 'run'], {
       runFlags: {
-        "backends": true
+        backends: true
       }
     });
 
     var result = task.execute(true);
     test.equals(result, 'dev_appserver.py --port=8080 --backends .');
+
+    test.done();
+  },
+
+  testRunDevServerWithCustomSDK: function (test) {
+    var task = ctx.newTask(['myapp', 'run'], {
+      sdk: "sdk"
+    });
+
+    var result = task.execute(true);
+    test.equals(result, 'sdk/dev_appserver.py --port=8080 .');
 
     test.done();
   }

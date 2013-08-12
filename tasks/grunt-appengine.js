@@ -82,6 +82,11 @@ module.exports = function (grunt) {
         optsFlags = taskOpts['runFlags'];
       }
 
+      var sdk = taskOpts["sdk"];
+      if (sdk) {
+        cmd = sdk + "/" + cmd;
+      }
+
 
       // ==== assemble script action
 
