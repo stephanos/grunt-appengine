@@ -1,4 +1,7 @@
-# grunt-appengine
+# grunt-appengine [![Build Status](https://travis-ci.org/101loops/grunt-appengine.png?branch=master)](https://travis-ci.org/101loops/grunt-appengine)
+
+> Managing App Engine
+
 
 
 ## Getting Started
@@ -17,10 +20,14 @@ grunt.loadNpmTasks('grunt-appengine');
 ```
 
 
-## Documentation
-TODO
 
 
-## License
-Copyright (c) 2013 101 Loops
-Licensed under the MIT license.
+## Release History
+
+ * 2013-08-12   v0.0.1   initial publishing
+
+---
+
+Task submitted by [Stephan Behnke](http://stephanbehnke.com)
+
+*This file was generated on Mon Aug 12 2013 11:53:37.*
