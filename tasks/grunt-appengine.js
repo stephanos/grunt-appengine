@@ -3,7 +3,7 @@
 module.exports = function (grunt) {
 
   var defaultOpts = {
-    directory: ".",
+    folder: ".",
 
     manageScript: 'appcfg.py',
     manageFlags: {
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
       if (validateOpts(taskOpts) === false) {
         return false;
       }
-      var appdir = taskOpts["directory"];
+      var appdir = taskOpts["folder"];
 
 
       // ==== assemble script name

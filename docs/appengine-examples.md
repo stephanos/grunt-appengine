@@ -12,15 +12,18 @@ appengine: {
   },
   
   frontend: {
-    directory: "frontend/"
+  	options: {
+    	folder: "frontend/"
+		}
   },
   
   backend: {
     options: {
       backend: true,
-      backendName: "crawler"
-    },
-    directory: "backend/"
+      backendName: "crawler",
+
+      folder: "backend/"
+    }
   }
 }
 ```

@@ -13,7 +13,7 @@ exports.copy = {
 
   testUpdateAppInAnotherDirectory: function (test) {
     var task = ctx.newTask(['myapp', 'update'], {
-      directory: "myapp/"
+      folder: "myapp/"
     });
 
     var result = task.execute(true);

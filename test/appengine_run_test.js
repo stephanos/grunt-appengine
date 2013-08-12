@@ -11,9 +11,9 @@ exports.copy = {
     test.done();
   },
 
-  testRunDevServerInAnotherDirectory: function (test) {
+  testRunDevServerInAnotherfolder: function (test) {
     var task = ctx.newTask(['myapp', 'run'], {
-      directory: "myapp/"
+      folder: "myapp/"
     });
 
     var result = task.execute(true);
