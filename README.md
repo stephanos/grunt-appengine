@@ -45,7 +45,6 @@ appengine: {
     	folder: "frontend/"
 		}
   },
-  
   backend: {
     options: {
       backend: true,
@@ -88,4 +87,4 @@ $ grunt appengine:backend:update
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Mon Aug 12 2013 16:41:37.*
+*This file was generated on Mon Aug 12 2013 18:21:05.*

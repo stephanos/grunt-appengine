@@ -16,7 +16,6 @@ appengine: {
     	folder: "frontend/"
 		}
   },
-  
   backend: {
     options: {
       backend: true,
