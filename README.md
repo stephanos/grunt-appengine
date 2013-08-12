@@ -41,15 +41,18 @@ appengine: {
   },
   
   frontend: {
-    directory: "frontend/"
+  	options: {
+    	folder: "frontend/"
+		}
   },
   
   backend: {
     options: {
       backend: true,
-      backendName: "crawler"
-    },
-    directory: "backend/"
+      backendName: "crawler",
+
+      folder: "backend/"
+    }
   }
 }
 ```
@@ -85,4 +88,4 @@ $ grunt appengine:backend:update
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Mon Aug 12 2013 14:52:01.*
+*This file was generated on Mon Aug 12 2013 16:41:37.*

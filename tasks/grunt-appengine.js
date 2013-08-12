@@ -2,8 +2,10 @@
 
 module.exports = function (grunt) {
 
+  var _ = grunt.util._;
+
   var defaultOpts = {
-    folder: ".",
+    folder: '.',
 
     manageScript: 'appcfg.py',
     manageFlags: {
@@ -44,59 +46,59 @@ module.exports = function (grunt) {
     return true;
   }
 
-  function validateOpts(opts) {
-    return true;
-  }
-
   // ==== INTERFACE
 
   var exports = {
     execute: function (dryRun) {
+      var self = this;
+      var name = self.name || 'appengine';
+
 
       // ==== read task parameters
 
       var taskArgs = this.args || [];
-      grunt.log.debug("args: " + taskArgs);
-
+      grunt.log.debug('args: ' + taskArgs);
       if (validateArgs(taskArgs) === false) {
         return false;
       }
+      var target = taskArgs[0];
       var action = taskArgs[1];
 
-      var taskOpts = this.options(defaultOpts);
-      grunt.log.debug("opts: " + JSON.stringify(taskOpts));
-
-      if (validateOpts(taskOpts) === false) {
-        return false;
-      }
-      var appdir = taskOpts["folder"];
+      var taskOpts = _.defaults(
+        grunt.config([name, target, 'options']) || {},
+        grunt.config([name, 'options']) || {},
+        defaultOpts
+      );
+      grunt.log.debug('opts: ' + JSON.stringify(taskOpts));
+      var appdir = taskOpts['folder'];
 
 
       // ==== assemble script name
 
       var cmd = taskOpts['manageScript'];
-      var optsFlags = taskOpts['manageFlags'];
+      var optsFlagsName = 'manageFlags';
 
       if (action === 'run') {
         cmd = taskOpts['runScript'];
-        optsFlags = taskOpts['runFlags'];
+        optsFlagsName = 'runFlags';
       }
+      var taskFlagsOpts = taskOpts[optsFlagsName];
 
-      var sdk = taskOpts["sdk"];
+      var sdk = taskOpts['sdk'];
       if (sdk) {
-        cmd = sdk + "/" + cmd;
+        cmd = sdk + '/' + cmd;
       }
 
 
       // ==== assemble script action
 
       var cmdAction = [];
-      if (taskOpts["backend"] === true) {
-        cmdAction.push("backends");
+      if (taskOpts['backend'] === true) {
+        cmdAction.push('backends');
         cmdAction.push(appdir);
         cmdAction.push(action);
 
-        var backendName = taskOpts["backendName"];
+        var backendName = taskOpts['backendName'];
         if (backendName) {
           cmdAction.push(backendName);
         }
@@ -111,12 +113,12 @@ module.exports = function (grunt) {
       // ==== assemble script flags
 
       var cmdFlags = [];
-      for (var attrname in optsFlags) {
-        var attrval = optsFlags[attrname];
+      for (var attrname in taskFlagsOpts) {
+        var attrval = taskFlagsOpts[attrname];
         if (attrval === true) {
           cmdFlags.push('--' + attrname);
         } else {
-          cmdFlags.push('--' + attrname + "=" + attrval);
+          cmdFlags.push('--' + attrname + '=' + attrval);
         }
       }
 
@@ -125,13 +127,13 @@ module.exports = function (grunt) {
 
       var cmdArgs = cmdFlags.concat(cmdAction);
       var fullCmd = cmd + ' ' + cmdArgs.join(' ');
-      grunt.log.writeln("executing: " + fullCmd);
+      grunt.log.writeln('executing: ' + fullCmd);
 
       if (dryRun !== true) {
         var done = this.async();
         spawned(done, cmd, cmdArgs)();
       } else {
-        grunt.log.write("(dry run: script not executed)");
+        grunt.log.write('(dry run: script not executed)');
       }
 
       grunt.log.writeln();

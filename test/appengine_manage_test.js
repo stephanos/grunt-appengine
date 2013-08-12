@@ -39,7 +39,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'appcfg.py --oauth2 --version=1.0 update .');
+    test.equals(result, 'appcfg.py --version=1.0 --oauth2 update .');
 
     test.done();
   },
@@ -52,7 +52,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'appcfg.py --oauth2 --application=myapp update .');
+    test.equals(result, 'appcfg.py --application=myapp --oauth2 update .');
 
     test.done();
   },

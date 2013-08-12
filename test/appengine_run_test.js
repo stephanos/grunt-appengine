@@ -30,7 +30,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'dev_appserver.py --port=8080 --clear_datastore=yes .');
+    test.equals(result, 'dev_appserver.py --clear_datastore=yes --port=8080 .');
 
     test.done();
   },
@@ -43,7 +43,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'dev_appserver.py --port=8080 --enable_sendmail .');
+    test.equals(result, 'dev_appserver.py --enable_sendmail --port=8080 .');
 
     test.done();
   },
@@ -56,7 +56,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'dev_appserver.py --port=8080 --backends .');
+    test.equals(result, 'dev_appserver.py --backends --port=8080 .');
 
     test.done();
   },
