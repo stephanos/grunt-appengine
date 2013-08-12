@@ -16,12 +16,10 @@ module.exports = function (grunt) {
     }
   };
 
-  function spawned(cmd, args) {
+  function spawned(done, cmd, args) {
     function spawnFunc() {
       var spawn = require('child_process').spawn;
       var PIPE = {stdio: 'inherit'};
-      /*jshint validthis:true */
-      var done = this.async();
       spawn(cmd, args || [], PIPE).on('exit', function (status) {
         done(status === 0);
       });
@@ -58,12 +56,16 @@ module.exports = function (grunt) {
       // ==== read task parameters
 
       var taskArgs = this.args || [];
+      grunt.log.debug("args: " + taskArgs);
+
       if (validateArgs(taskArgs) === false) {
         return false;
       }
       var action = taskArgs[1];
 
       var taskOpts = this.options(defaultOpts);
+      grunt.log.debug("opts: " + JSON.stringify(taskOpts));
+
       if (validateOpts(taskOpts) === false) {
         return false;
       }
@@ -117,12 +119,18 @@ module.exports = function (grunt) {
       // ==== execute and return
 
       var cmdArgs = cmdFlags.concat(cmdAction);
-      if (!dryRun) {
-        spawned(cmd, cmdArgs)();
+      var fullCmd = cmd + ' ' + cmdArgs.join(' ');
+      grunt.log.writeln("executing: " + fullCmd);
+
+      if (dryRun !== true) {
+        var done = this.async();
+        spawned(done, cmd, cmdArgs)();
+      } else {
+        grunt.log.write("(dry run: script not executed)");
       }
 
       grunt.log.writeln();
-      return cmd + ' ' + cmdArgs.join(' ');
+      return fullCmd;
     }
   };
 
