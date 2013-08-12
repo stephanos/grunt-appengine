@@ -1,6 +1,6 @@
 # grunt-appengine [![Build Status](https://travis-ci.org/101loops/grunt-appengine.png?branch=master)](https://travis-ci.org/101loops/grunt-appengine)
 
-> Managing App Engine
+> Grunt task for running and managing App Engine
 
 
 
@@ -22,6 +22,61 @@ grunt.loadNpmTasks('grunt-appengine');
 
 
 
+## Appengine task
+_Run this task with the `grunt appengine` command._
+
+
+
+### Usage Example
+
+```js
+appengine: {
+  options: {
+    manageFlags: {
+      oauth2: true
+    },
+    runFlags: {
+      port: 8080
+    }
+  },
+  
+  frontend: {
+    directory: "frontend/"
+  },
+  
+  backend: {
+    options: {
+      backend: true,
+      backendName: "crawler"
+    },
+    directory: "backend/"
+  }
+}
+```
+
+All options are optional.
+
+
+**Running the dev server**
+
+```shell
+$ grunt appengine:frontend:run
+```
+
+
+**Update the frontend**
+
+```shell
+$ grunt appengine:frontend:update
+```
+
+
+**Update the backend**
+
+```shell
+$ grunt appengine:backend:update
+```
+
 ## Release History
 
  * 2013-08-12   v0.0.1   initial publishing
@@ -30,4 +85,4 @@ grunt.loadNpmTasks('grunt-appengine');
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Mon Aug 12 2013 11:53:37.*
+*This file was generated on Mon Aug 12 2013 14:52:01.*
