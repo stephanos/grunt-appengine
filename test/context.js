@@ -1,5 +1,5 @@
 var grunt = require('grunt');
-var appengine = require('../tasks/appengine.js');
+var appengine = require('../tasks/grunt-appengine.js');
 
 module.exports =  {
 
