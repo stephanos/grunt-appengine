@@ -125,9 +125,6 @@ module.exports = function (grunt) {
 
     command: function (cmd, args) {
       spawned(cmd, args);
-      //spawned('dev_appserver.py', args);
-      //spawned('./gae_devserver.sh', [grunt.config('connect.options.port') || 9000, grunt.config('yeoman.app')])
-      //'$(GO_APP_ENGINE_SDK)/appcfg.py --version $(APP_VER) --application $(APP_ID) update $(GO_BUILD_TARGET)'
     }
   };
 
