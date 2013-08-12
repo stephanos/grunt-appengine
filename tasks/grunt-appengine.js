@@ -82,7 +82,11 @@ module.exports = function (grunt) {
         cmd = taskOpts['runScript'];
         optsFlagsName = 'runFlags';
       }
-      var taskFlagsOpts = taskOpts[optsFlagsName];
+      var taskFlagsOpts = _.defaults(
+        (grunt.config([name, target, 'options']) || {})[optsFlagsName] || {},
+        (grunt.config([name, 'options']) || {})[optsFlagsName] || {},
+        defaultOpts[optsFlagsName]
+      );
 
       var sdk = taskOpts['sdk'];
       if (sdk) {

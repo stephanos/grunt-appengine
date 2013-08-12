@@ -13,15 +13,6 @@ module.exports =  {
       return gruntOptions;
     };
 
-    /*
-    var execute = task.execute
-    task.execute = function () {
-      execute(function() {
-        // do nothing
-      })
-    };
-    */
-
     return task;
   }
 };
