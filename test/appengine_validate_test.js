@@ -5,7 +5,7 @@ exports.copy = {
   testMissingTarget: function (test) {
     var task = ctx.newTask([]);
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, false);
 
     test.done();
@@ -14,7 +14,7 @@ exports.copy = {
   testMissingCommand: function (test) {
     var task = ctx.newTask(['myapp']);
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, false);
 
     test.done();
@@ -23,7 +23,7 @@ exports.copy = {
   testTooManyArgs: function (test) {
     var task = ctx.newTask(['myapp', 'run', 'nonsense']);
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, false);
 
     test.done();

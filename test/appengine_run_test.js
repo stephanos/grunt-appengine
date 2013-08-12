@@ -5,7 +5,7 @@ exports.copy = {
   testRunDevServer: function (test) {
     var task = ctx.newTask(['myapp', 'run']);
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'dev_appserver.py --port=8080 .');
 
     test.done();
@@ -16,7 +16,7 @@ exports.copy = {
       directory: "myapp/"
     });
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'dev_appserver.py --port=8080 myapp/');
 
     test.done();
@@ -29,7 +29,7 @@ exports.copy = {
       }
     });
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'dev_appserver.py --port=8080 --clear_datastore=yes .');
 
     test.done();
@@ -42,7 +42,7 @@ exports.copy = {
       }
     });
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'dev_appserver.py --port=8080 --enable_sendmail .');
 
     test.done();
@@ -55,7 +55,7 @@ exports.copy = {
       }
     });
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'dev_appserver.py --port=8080 --backends .');
 
     test.done();

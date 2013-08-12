@@ -5,7 +5,7 @@ exports.copy = {
   testUpdateApp: function (test) {
     var task = ctx.newTask(['myapp', 'update']);
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'appcfg.py --oauth2 update .');
 
     test.done();
@@ -16,7 +16,7 @@ exports.copy = {
       directory: "myapp/"
     });
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'appcfg.py --oauth2 update myapp/');
 
     test.done();
@@ -25,7 +25,7 @@ exports.copy = {
   testUpdateIndexes: function (test) {
     var task = ctx.newTask(['myapp', 'update_indexes']);
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'appcfg.py --oauth2 update_indexes .');
 
     test.done();
@@ -38,7 +38,7 @@ exports.copy = {
       }
     });
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'appcfg.py --oauth2 --version=1.0 update .');
 
     test.done();
@@ -51,7 +51,7 @@ exports.copy = {
       }
     });
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'appcfg.py --oauth2 --application=myapp update .');
 
     test.done();
@@ -62,7 +62,7 @@ exports.copy = {
       "backend": true
     });
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'appcfg.py --oauth2 backends . update');
 
     test.done();
@@ -74,7 +74,7 @@ exports.copy = {
       "backendName": "crawler"
     });
 
-    var result = task.execute();
+    var result = task.execute(true);
     test.equals(result, 'appcfg.py --oauth2 backends . update crawler');
 
     test.done();

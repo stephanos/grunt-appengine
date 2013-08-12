@@ -53,7 +53,7 @@ module.exports = function (grunt) {
   // ==== INTERFACE
 
   var exports = {
-    execute: function () {
+    execute: function (dryRun) {
 
       // ==== read task parameters
 
@@ -117,14 +117,12 @@ module.exports = function (grunt) {
       // ==== execute and return
 
       var cmdArgs = cmdFlags.concat(cmdAction);
-      this.command(cmd, cmdArgs);
+      if (!dryRun) {
+        spawned(cmd, cmdArgs)();
+      }
 
       grunt.log.writeln();
       return cmd + ' ' + cmdArgs.join(' ');
-    },
-
-    command: function (cmd, args) {
-      spawned(cmd, args);
     }
   };
 

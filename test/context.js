@@ -7,8 +7,6 @@ module.exports =  {
 
     var task = appengine(grunt);
 
-    // mock configuration parameters
-
     task.args = taskArgs || [];
 
     task.options = function (defaultOpts) {
@@ -36,11 +34,14 @@ module.exports =  {
       return res;
     };
 
-    // mock script call
-
-    task.command = function (cmd, args) {
-      // do nothing
+    /*
+    var execute = task.execute
+    task.execute = function () {
+      execute(function() {
+        // do nothing
+      })
     };
+    */
 
     return task;
   }
