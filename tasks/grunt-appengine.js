@@ -5,7 +5,7 @@ module.exports = function (grunt) {
   var _ = grunt.util._;
 
   var defaultOpts = {
-    folder: '.',
+    root: '.',
 
     manageScript: 'appcfg.py',
     manageFlags: {
@@ -70,7 +70,7 @@ module.exports = function (grunt) {
         defaultOpts
       );
       grunt.log.debug('opts: ' + JSON.stringify(taskOpts));
-      var appdir = taskOpts['folder'];
+      var appdir = taskOpts['root'];
 
 
       // ==== assemble script name

@@ -13,7 +13,7 @@ appengine: {
   
   frontend: {
   	options: {
-    	folder: "frontend/"
+    	root: "frontend/"
 		}
   },
   backend: {
@@ -21,7 +21,7 @@ appengine: {
       backend: true,
       backendName: "crawler",
 
-      folder: "backend/"
+      root: "backend/"
     }
   }
 }
