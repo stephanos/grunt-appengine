@@ -82,9 +82,11 @@ $ grunt appengine:backend:update
 ## Release History
 
  * 2013-08-12   v0.0.1   initial publishing
+ * 2013-08-13   v0.0.2   changed option 'folder' to 'root'
+ * 2013-08-13   v0.0.3   added option 'env' to control process environment variables
 
 ---
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Tue Aug 13 2013 10:52:11.*
+*This file was generated on Tue Aug 13 2013 11:13:36.*

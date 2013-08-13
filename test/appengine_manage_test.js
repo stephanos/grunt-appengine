@@ -6,7 +6,7 @@ exports.copy = {
     var task = ctx.newTask(['myapp', 'update']);
 
     var result = task.execute(true);
-    test.equals(result, 'appcfg.py --oauth2 update .');
+    test.equals(result.cmd, 'appcfg.py --oauth2 update .');
 
     test.done();
   },
@@ -17,7 +17,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'appcfg.py --oauth2 update myapp/');
+    test.equals(result.cmd, 'appcfg.py --oauth2 update myapp/');
 
     test.done();
   },
@@ -26,7 +26,7 @@ exports.copy = {
     var task = ctx.newTask(['myapp', 'update_indexes']);
 
     var result = task.execute(true);
-    test.equals(result, 'appcfg.py --oauth2 update_indexes .');
+    test.equals(result.cmd, 'appcfg.py --oauth2 update_indexes .');
 
     test.done();
   },
@@ -39,7 +39,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'appcfg.py --version=1.0 --oauth2 update .');
+    test.equals(result.cmd, 'appcfg.py --version=1.0 --oauth2 update .');
 
     test.done();
   },
@@ -52,7 +52,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'appcfg.py --application=myapp --oauth2 update .');
+    test.equals(result.cmd, 'appcfg.py --application=myapp --oauth2 update .');
 
     test.done();
   },
@@ -63,7 +63,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'appcfg.py --oauth2 backends . update');
+    test.equals(result.cmd, 'appcfg.py --oauth2 backends . update');
 
     test.done();
   },
@@ -75,7 +75,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result, 'appcfg.py --oauth2 backends . update crawler');
+    test.equals(result.cmd, 'appcfg.py --oauth2 backends . update crawler');
 
     test.done();
   }

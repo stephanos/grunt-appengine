@@ -18,11 +18,11 @@ module.exports = function (grunt) {
     }
   };
 
-  function spawned(done, cmd, args) {
+  function spawned(done, cmd, args, opts) {
     function spawnFunc() {
       var spawn = require('child_process').spawn;
-      var PIPE = {stdio: 'inherit'};
-      spawn(cmd, args || [], PIPE).on('exit', function (status) {
+      opts.stdio = 'inherit';
+      spawn(cmd, args || [], opts).on('exit', function (status) {
         done(status === 0);
       });
     }
@@ -127,6 +127,17 @@ module.exports = function (grunt) {
       }
 
 
+      // ==== assemble script process opts
+
+      var cmdOpts = {};
+      cmdOpts['env'] = process.env || {};
+
+      var envTaskOpts = taskOpts['env'] || {};
+      for (var envName in envTaskOpts) {
+        cmdOpts['env'][envName] = envTaskOpts[envName];
+      }
+
+
       // ==== execute and return
 
       var cmdArgs = cmdFlags.concat(cmdAction);
@@ -135,13 +146,17 @@ module.exports = function (grunt) {
 
       if (dryRun !== true) {
         var done = this.async();
-        spawned(done, cmd, cmdArgs)();
+        spawned(done, cmd, cmdArgs, cmdOpts)();
       } else {
         grunt.log.write('(dry run: script not executed)');
       }
 
       grunt.log.writeln();
-      return fullCmd;
+
+      return {
+        cmd: fullCmd,
+        opts: cmdOpts
+      };
     }
   };
 

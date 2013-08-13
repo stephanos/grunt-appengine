@@ -1,7 +1,7 @@
 {
   "name": "grunt-appengine",
   "description": "Grunt task for running and managing App Engine",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/101loops/grunt-appengine",
   "author": {
     "name": "101 Loops",

@@ -2,3 +2,13 @@ v0.0.1:
   date: 2013-08-12
   changes:
     - initial publishing
+
+v0.0.2:
+  date: 2013-08-13
+  changes:
+    - changed option 'folder' to 'root'
+
+v0.0.3:
+  date: 2013-08-13
+  changes:
+    - added option 'env' to control process environment variables
