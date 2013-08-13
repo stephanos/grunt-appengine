@@ -65,6 +65,11 @@ module.exports = function (grunt) {
       var target = taskArgs[1];
       var profile = taskArgs[2];
 
+      if (!grunt.config([name, target])) {
+        grunt.log.error('Unable to run task: target \'' + target + '\' not found');
+        return false;
+      }
+
       var taskOpts = _.defaults(
         grunt.config([name, target, profile]) || {},
         grunt.config([name, target]) || {},
