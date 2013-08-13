@@ -30,15 +30,15 @@ module.exports = function (grunt) {
     return spawnFunc;
   }
 
-  // expecting 'appengine:<app>:<command>'
+  // expecting 'appengine:<command>:<target>'
   function validateArgs(args) {
     if (args.length === 0) {
-      grunt.log.error('Unable to run task: no target specified');
-      return false;
-    } else if (args.length === 1) {
       grunt.log.error('Unable to run task: no action specified (e.g. run or update)');
       return false;
-    } else if (args.length > 2) {
+    } else if (args.length === 1) {
+      grunt.log.error('Unable to run task: no target specified');
+      return false;
+    } else if (args.length > 3) {
       grunt.log.error('Unable to run task: too many arguments (up to 3 allowed)');
       return false;
     }
@@ -61,14 +61,17 @@ module.exports = function (grunt) {
       if (validateArgs(taskArgs) === false) {
         return false;
       }
-      var target = taskArgs[0];
-      var action = taskArgs[1];
+      var action = taskArgs[0];
+      var target = taskArgs[1];
+      var profile = taskArgs[2];
 
       var taskOpts = _.defaults(
-        grunt.config([name, target, 'options']) || {},
+        grunt.config([name, target, profile]) || {},
+        grunt.config([name, target]) || {},
         grunt.config([name, 'options']) || {},
         defaultOpts
       );
+      //console.log(grunt.config([name, target, profile]));
       grunt.log.debug('Task opts: ' + JSON.stringify(taskOpts));
       var appdir = taskOpts['root'];
 
@@ -77,13 +80,14 @@ module.exports = function (grunt) {
 
       var cmd = taskOpts['manageScript'];
       var optsFlagsName = 'manageFlags';
-
       if (action === 'run') {
         cmd = taskOpts['runScript'];
         optsFlagsName = 'runFlags';
       }
+
       var taskFlagsOpts = _.defaults(
-        (grunt.config([name, target, 'options']) || {})[optsFlagsName] || {},
+        (grunt.config([name, target, profile]) || {})[optsFlagsName] || {},
+        (grunt.config([name, target]) || {})[optsFlagsName] || {},
         (grunt.config([name, 'options']) || {})[optsFlagsName] || {},
         defaultOpts[optsFlagsName]
       );

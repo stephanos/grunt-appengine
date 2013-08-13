@@ -12,17 +12,12 @@ appengine: {
   },
   
   frontend: {
-  	options: {
-    	root: "frontend/"
-		}
+		root: 'frontend/'
   },
   backend: {
-    options: {
-      backend: true,
-      backendName: "crawler",
-
-      root: "backend/"
-    }
+  	root: 'backend/',
+		backend: true,
+		backendName: 'crawler'
   }
 }
 ```

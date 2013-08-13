@@ -41,17 +41,13 @@ appengine: {
   },
   
   frontend: {
-  	options: {
-    	root: "frontend/"
-		}
+		root: "frontend/"
   },
   backend: {
-    options: {
-      backend: true,
-      backendName: "crawler",
+		backend: true,
+		backendName: "crawler",
 
-      root: "backend/"
-    }
+		root: "backend/"
   }
 }
 ```
@@ -84,9 +80,10 @@ $ grunt appengine:backend:update
  * 2013-08-12   v0.0.1   initial publishing
  * 2013-08-13   v0.0.2   changed option 'folder' to 'root'
  * 2013-08-13   v0.0.3   added option 'env' to control process environment variables
+ * 2013-08-13   v0.0.4   changed command order from 'appengine:<target>:<command>' to 'appengine:<command>:<target>' [object Object]
 
 ---
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Tue Aug 13 2013 11:13:36.*
+*This file was generated on Tue Aug 13 2013 18:21:40.*

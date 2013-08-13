@@ -3,7 +3,7 @@ var ctx = require('./context.js');
 exports.copy = {
 
   testRunDevServer: function (test) {
-    var task = ctx.newTask(['myapp', 'run']);
+    var task = ctx.newTask(['run', 'myapp']);
 
     var result = task.execute(true);
     test.equals(result.cmd, 'dev_appserver.py --port=8080 .');
@@ -12,8 +12,8 @@ exports.copy = {
   },
 
   testRunDevServerInAnotherRoot: function (test) {
-    var task = ctx.newTask(['myapp', 'run'], {
-      root: "myapp/"
+    var task = ctx.newTask(['run', 'myapp'], {
+      root: 'myapp/'
     });
 
     var result = task.execute(true);
@@ -23,9 +23,9 @@ exports.copy = {
   },
 
   testRunDevServerWithClearDatastore: function (test) {
-    var task = ctx.newTask(['myapp', 'run'], {
+    var task = ctx.newTask(['run', 'myapp'], {
       runFlags: {
-        clear_datastore: "yes"
+        clear_datastore: 'yes'
       }
     });
 
@@ -36,7 +36,7 @@ exports.copy = {
   },
 
   testRunDevServerWithMail: function (test) {
-    var task = ctx.newTask(['myapp', 'run'], {
+    var task = ctx.newTask(['run', 'myapp'], {
       runFlags: {
         enable_sendmail: true
       }
@@ -49,7 +49,7 @@ exports.copy = {
   },
 
   testRunDevServerWithBackends: function (test) {
-    var task = ctx.newTask(['myapp', 'run'], {
+    var task = ctx.newTask(['run', 'myapp'], {
       runFlags: {
         backends: true
       }
@@ -62,8 +62,8 @@ exports.copy = {
   },
 
   testRunDevServerWithCustomSDK: function (test) {
-    var task = ctx.newTask(['myapp', 'run'], {
-      sdk: "sdk"
+    var task = ctx.newTask(['run', 'myapp'], {
+      sdk: 'sdk'
     });
 
     var result = task.execute(true);
@@ -73,7 +73,7 @@ exports.copy = {
   },
 
   testRunDevServerWithCustomEnv: function (test) {
-    var task = ctx.newTask(['myapp', 'run'], {
+    var task = ctx.newTask(['run', 'myapp'], {
       env: {
         PATH: 'MYPATH'
       }

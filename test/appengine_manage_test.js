@@ -3,7 +3,7 @@ var ctx = require('./context.js');
 exports.copy = {
 
   testUpdateApp: function (test) {
-    var task = ctx.newTask(['myapp', 'update']);
+    var task = ctx.newTask(['update', 'myapp']);
 
     var result = task.execute(true);
     test.equals(result.cmd, 'appcfg.py --oauth2 update .');
@@ -12,8 +12,8 @@ exports.copy = {
   },
 
   testUpdateAppInAnotherDirectory: function (test) {
-    var task = ctx.newTask(['myapp', 'update'], {
-      root: "myapp/"
+    var task = ctx.newTask(['update', 'myapp'], {
+      root: 'myapp/'
     });
 
     var result = task.execute(true);
@@ -23,7 +23,7 @@ exports.copy = {
   },
 
   testUpdateIndexes: function (test) {
-    var task = ctx.newTask(['myapp', 'update_indexes']);
+    var task = ctx.newTask(['update_indexes', 'myapp']);
 
     var result = task.execute(true);
     test.equals(result.cmd, 'appcfg.py --oauth2 update_indexes .');
@@ -32,9 +32,9 @@ exports.copy = {
   },
 
   testUpdateWithCustomVersion: function (test) {
-    var task = ctx.newTask(['myapp', 'update'], {
+    var task = ctx.newTask(['update', 'myapp'], {
       manageFlags: {
-        version: "1.0"
+        version: '1.0'
       }
     });
 
@@ -45,9 +45,9 @@ exports.copy = {
   },
 
   testUpdateWithCustomApplication: function (test) {
-    var task = ctx.newTask(['myapp', 'update'], {
+    var task = ctx.newTask(['update', 'myapp'], {
       manageFlags: {
-        application: "myapp"
+        application: 'myapp'
       }
     });
 
@@ -57,8 +57,23 @@ exports.copy = {
     test.done();
   },
 
+  testUpdateAppProfile: function (test) {
+    var task = ctx.newTask(['update', 'myapp', 'stage'], {
+      stage: {
+        manageFlags: {
+          version: 'stage'
+        }
+      }
+    });
+
+    var result = task.execute(true);
+    test.equals(result.cmd, 'appcfg.py --version=stage --oauth2 update .');
+
+    test.done();
+  },
+
   testUpdateAllBackends: function (test) {
-    var task = ctx.newTask(['myapp', 'update'], {
+    var task = ctx.newTask(['update', 'myapp'], {
       backend: true
     });
 
@@ -69,9 +84,9 @@ exports.copy = {
   },
 
   testUpdateSingleBackend: function (test) {
-    var task = ctx.newTask(['myapp', 'update'], {
+    var task = ctx.newTask(['update', 'myapp'], {
       backend: true,
-      backendName: "crawler"
+      backendName: 'crawler'
     });
 
     var result = task.execute(true);

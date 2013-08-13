@@ -12,3 +12,9 @@ v0.0.3:
   date: 2013-08-13
   changes:
     - added option 'env' to control process environment variables
+
+v0.0.4:
+  date: 2013-08-13
+  changes:
+    - changed command order from 'appengine:<target>:<command>' to 'appengine:<command>:<target>'
+    - added additional sub-level of configuration: 'appengine:<command>:<target>:<profile>'
