@@ -57,7 +57,7 @@ module.exports = function (grunt) {
       // ==== read task parameters
 
       var taskArgs = this.args || [];
-      grunt.log.debug('args: ' + taskArgs);
+      grunt.log.debug('Task args: ' + taskArgs);
       if (validateArgs(taskArgs) === false) {
         return false;
       }
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
         grunt.config([name, 'options']) || {},
         defaultOpts
       );
-      grunt.log.debug('opts: ' + JSON.stringify(taskOpts));
+      grunt.log.debug('Task opts: ' + JSON.stringify(taskOpts));
       var appdir = taskOpts['root'];
 
 
@@ -136,6 +136,8 @@ module.exports = function (grunt) {
       for (var envName in envTaskOpts) {
         cmdOpts['env'][envName] = envTaskOpts[envName];
       }
+
+      grunt.log.debug('CMD opts: ' + JSON.stringify(cmdOpts));
 
 
       // ==== execute and return
