@@ -41,13 +41,12 @@ appengine: {
   },
   
   frontend: {
-		root: "frontend/"
+		root: 'frontend/'
   },
   backend: {
+  	root: 'backend/',
 		backend: true,
-		backendName: "crawler",
-
-		root: "backend/"
+		backendName: 'crawler'
   }
 }
 ```
@@ -86,4 +85,4 @@ $ grunt appengine:backend:update
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Tue Aug 13 2013 18:21:40.*
+*This file was generated on Tue Aug 13 2013 18:23:23.*
