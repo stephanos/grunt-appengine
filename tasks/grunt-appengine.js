@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     return spawnFunc;
   }
 
-  // expecting 'appengine:<command>:<target>'
+  // expecting 'appengine:<command>:<target>(:<profile>)'
   function validateArgs(args) {
     if (args.length === 0) {
       grunt.log.error('Unable to run task: no action specified (e.g. run or update)');
