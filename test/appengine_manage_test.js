@@ -93,6 +93,21 @@ exports.copy = {
     test.equals(result.cmd, 'appcfg.py --oauth2 backends . update crawler');
 
     test.done();
+  },
+
+  testRunWithCustomGoPath: function (test) {
+    var task = ctx.newTask(['update', 'myapp'], {
+      myapp: {
+        GOPATH: ["mypath"]
+      }
+    });
+
+    var result = task.execute(true);
+    test.notEqual(result, false);
+    test.equal(result.opts['env']['GOPATH'].indexOf(':'), -1);
+    test.notEqual(result.opts['env']['GOPATH'].indexOf('/mypath'), -1);
+
+    test.done();
   }
 
 };

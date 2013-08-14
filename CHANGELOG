@@ -13,8 +13,13 @@ v0.0.3:
   changes:
     - added option 'env' to control process environment variables
 
-v0.0.4:
+v0.1.0:
   date: 2013-08-13
   changes:
     - changed command order from 'appengine:<target>:<command>' to 'appengine:<command>:<target>'
     - added additional sub-level of configuration: 'appengine:<command>:<target>:<profile>'
+
+v0.1.1:
+  date: 2013-08-14
+  changes:
+    - added support for GOPATH configuration

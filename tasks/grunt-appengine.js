@@ -1,5 +1,7 @@
 'use strict';
 
+var path = require('path');
+
 module.exports = function (grunt) {
 
   var _ = grunt.util._;
@@ -28,6 +30,20 @@ module.exports = function (grunt) {
     }
 
     return spawnFunc;
+  }
+
+  function createPath(opts) {
+    var res = [];
+    var root = opts['root'] || '.';
+    var paths = opts['GOPATH'] || [];
+
+    if (paths) {
+      for (var i in paths) {
+        res.push(path.resolve(path.join(root, paths[i])));
+      }
+    }
+
+    return res;
   }
 
   // expecting 'appengine:<command>:<target>(:<profile>)'
@@ -70,10 +86,13 @@ module.exports = function (grunt) {
         return false;
       }
 
+      var gruntTaskTargetProfileOpts = grunt.config([name, target, profile]) || {};
+      var gruntTaskTargetOpts = grunt.config([name, target]) || {};
+      var gruntTaskOpts = grunt.config([name, 'options']) || {};
       var taskOpts = _.defaults(
-        grunt.config([name, target, profile]) || {},
-        grunt.config([name, target]) || {},
-        grunt.config([name, 'options']) || {},
+        gruntTaskTargetProfileOpts,
+        gruntTaskTargetOpts,
+        gruntTaskOpts,
         defaultOpts
       );
       //console.log(grunt.config([name, target, profile]));
@@ -91,10 +110,10 @@ module.exports = function (grunt) {
       }
 
       var taskFlagsOpts = _.defaults(
-        (grunt.config([name, target, profile]) || {})[optsFlagsName] || {},
-        (grunt.config([name, target]) || {})[optsFlagsName] || {},
-        (grunt.config([name, 'options']) || {})[optsFlagsName] || {},
-        defaultOpts[optsFlagsName]
+        gruntTaskTargetProfileOpts[optsFlagsName] || {},
+        gruntTaskTargetOpts[optsFlagsName] || {},
+        gruntTaskOpts[optsFlagsName] || {},
+        defaultOpts[optsFlagsName] || {}
       );
 
       var sdk = taskOpts['sdk'];
@@ -145,6 +164,11 @@ module.exports = function (grunt) {
       for (var envName in envTaskOpts) {
         cmdOpts['env'][envName] = envTaskOpts[envName];
       }
+
+      cmdOpts['env'].GOPATH =
+        createPath(gruntTaskOpts)
+          .concat(createPath(gruntTaskTargetOpts))
+          .concat(createPath(gruntTaskTargetProfileOpts)).join(':');
 
       grunt.log.debug('CMD opts: ' + JSON.stringify(cmdOpts));
 
