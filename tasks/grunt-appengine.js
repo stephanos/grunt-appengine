@@ -55,7 +55,7 @@ module.exports = function (grunt) {
       grunt.log.error('Unable to run task: no target specified');
       return false;
     } else if (args.length > 3) {
-      grunt.log.error('Unable to run task: too many arguments (up to 3 allowed)');
+      grunt.log.error('Unable to run task: too many arguments (up to 4 allowed)');
       return false;
     }
 
