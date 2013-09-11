@@ -81,9 +81,10 @@ $ grunt appengine:backend:update
  * 2013-08-13   v0.0.3   added option 'env' to control process environment variables
  * 2013-08-13   v0.1.0   changed command order from 'appengine:<target>:<command>' to 'appengine:<command>:<target>' [object Object]
  * 2013-08-14   v0.1.1   added support for GOPATH configuration
+ * 2013-09-11   v0.1.2   removed run flag 'port' added config option 'stdio'
 
 ---
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Wed Aug 14 2013 13:55:48.*
+*This file was generated on Wed Sep 11 2013 11:51:55.*

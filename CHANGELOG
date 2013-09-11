@@ -23,3 +23,9 @@ v0.1.1:
   date: 2013-08-14
   changes:
     - added support for GOPATH configuration
+
+v0.1.2:
+  date: 2013-09-11
+  changes:
+    - removed run flag 'port'
+    - added config option 'stdio'

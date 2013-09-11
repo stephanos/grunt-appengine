@@ -16,15 +16,16 @@ module.exports = function (grunt) {
 
     runScript: 'dev_appserver.py',
     runFlags: {
-      port: 8080
-    }
+      // empty
+    },
+
+    stdio: 'inherit'
   };
 
   function spawned(done, cmd, args, opts) {
     function spawnFunc() {
       var spawn = require('child_process').spawn;
-      opts.stdio = 'inherit';
-      spawn(cmd, args || [], opts).on('exit', function (status) {
+      spawn(cmd, args || [], opts || {}).on('exit', function (status) {
         done(status === 0);
       });
     }
@@ -169,6 +170,8 @@ module.exports = function (grunt) {
         createPath(gruntTaskOpts)
           .concat(createPath(gruntTaskTargetOpts))
           .concat(createPath(gruntTaskTargetProfileOpts)).join(':');
+
+      cmdOpts['stdio'] = taskOpts['stdio'];
 
       grunt.log.debug('CMD opts: ' + JSON.stringify(cmdOpts));
 

@@ -6,7 +6,7 @@ exports.copy = {
     var task = ctx.newTask(['run', 'myapp']);
 
     var result = task.execute(true);
-    test.equals(result.cmd, 'dev_appserver.py --port=8080 .');
+    test.equals(result.cmd, 'dev_appserver.py .');
 
     test.done();
   },
@@ -17,7 +17,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result.cmd, 'dev_appserver.py --port=8080 myapp/');
+    test.equals(result.cmd, 'dev_appserver.py myapp/');
 
     test.done();
   },
@@ -30,7 +30,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result.cmd, 'dev_appserver.py --clear_datastore=yes --port=8080 .');
+    test.equals(result.cmd, 'dev_appserver.py --clear_datastore=yes .');
 
     test.done();
   },
@@ -43,7 +43,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result.cmd, 'dev_appserver.py --enable_sendmail --port=8080 .');
+    test.equals(result.cmd, 'dev_appserver.py --enable_sendmail .');
 
     test.done();
   },
@@ -56,7 +56,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result.cmd, 'dev_appserver.py --backends --port=8080 .');
+    test.equals(result.cmd, 'dev_appserver.py --backends .');
 
     test.done();
   },
@@ -67,7 +67,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result.cmd, 'sdk/dev_appserver.py --port=8080 .');
+    test.equals(result.cmd, 'sdk/dev_appserver.py .');
 
     test.done();
   },
@@ -81,6 +81,17 @@ exports.copy = {
 
     var result = task.execute(true);
     test.equals(result.opts['env']['PATH'], 'MYPATH');
+
+    test.done();
+  },
+
+  testRunDevServerWithCustomStdio: function (test) {
+    var task = ctx.newTask(['run', 'myapp'], {
+      stdio: 'pipe'
+    });
+
+    var result = task.execute(true);
+    test.equals(result.opts.stdio, 'pipe');
 
     test.done();
   }
