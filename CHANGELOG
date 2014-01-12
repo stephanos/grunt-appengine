@@ -17,7 +17,6 @@ v0.1.0:
   date: 2013-08-13
   changes:
     - changed command order from 'appengine:<target>:<command>' to 'appengine:<command>:<target>'
-    - added additional sub-level of configuration: 'appengine:<command>:<target>:<profile>'
 
 v0.1.1:
   date: 2013-08-14
@@ -27,5 +26,10 @@ v0.1.1:
 v0.1.2:
   date: 2013-09-11
   changes:
-    - removed run flag 'port'
+    - removed run flag 'port',
     - added config option 'stdio'
+
+v0.1.3:
+  date: 2014-01-12
+  changes:
+    - added support for updating modules

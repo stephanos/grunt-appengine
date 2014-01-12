@@ -79,12 +79,13 @@ $ grunt appengine:backend:update
  * 2013-08-12   v0.0.1   initial publishing
  * 2013-08-13   v0.0.2   changed option 'folder' to 'root'
  * 2013-08-13   v0.0.3   added option 'env' to control process environment variables
- * 2013-08-13   v0.1.0   changed command order from 'appengine:<target>:<command>' to 'appengine:<command>:<target>' [object Object]
+ * 2013-08-13   v0.1.0   changed command order from 'appengine:<target>:<command>' to 'appengine:<command>:<target>'
  * 2013-08-14   v0.1.1   added support for GOPATH configuration
- * 2013-09-11   v0.1.2   removed run flag 'port' added config option 'stdio'
+ * 2013-09-11   v0.1.2   removed run flag 'port', added config option 'stdio'
+ * 2014-01-12   v0.1.3   added support for updating modules
 
 ---
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Wed Sep 11 2013 11:51:55.*
+*This file was generated on Sun Jan 12 2014 12:06:44.*
