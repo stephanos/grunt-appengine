@@ -98,7 +98,7 @@ module.exports = function (grunt) {
       );
       //console.log(grunt.config([name, target, profile]));
       grunt.log.debug('Task opts: ' + JSON.stringify(taskOpts));
-      var appdir = taskOpts['root'];
+      var appDir = taskOpts['root'];
 
 
       // ==== assemble script name
@@ -128,7 +128,7 @@ module.exports = function (grunt) {
       var cmdAction = [];
       if (taskOpts['backend'] === true) {
         cmdAction.push('backends');
-        cmdAction.push(appdir);
+        cmdAction.push(appDir);
         cmdAction.push(action);
 
         var backendName = taskOpts['backendName'];
@@ -139,7 +139,15 @@ module.exports = function (grunt) {
         if (action !== 'run') {
           cmdAction.push(action);
         }
-        cmdAction.push(appdir);
+        var modules = taskOpts['modules'];
+        if (modules) {
+          var files = ['app.yaml'].concat(modules);
+          for (var i in files) {
+            cmdAction.push(path.join(appDir, files[i]));
+          }
+        } else {
+          cmdAction.push(appDir);
+        }
       }
 
 

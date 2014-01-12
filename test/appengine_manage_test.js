@@ -22,6 +22,29 @@ exports.copy = {
     test.done();
   },
 
+  testUpdateAppWithModule: function (test) {
+    var task = ctx.newTask(['update', 'myapp'], {
+      modules: ['module.yaml']
+    });
+
+    var result = task.execute(true);
+    test.equals(result.cmd, 'appcfg.py --oauth2 update app.yaml module.yaml');
+
+    test.done();
+  },
+
+  testUpdateAppWithMultipleModules: function (test) {
+    var task = ctx.newTask(['update', 'myapp'], {
+      root: 'app/',
+      modules: ['default.yaml', 'mobile.yaml']
+    });
+
+    var result = task.execute(true);
+    test.equals(result.cmd, 'appcfg.py --oauth2 update app/app.yaml app/default.yaml app/mobile.yaml');
+
+    test.done();
+  },
+
   testUpdateIndexes: function (test) {
     var task = ctx.newTask(['update_indexes', 'myapp']);
 
