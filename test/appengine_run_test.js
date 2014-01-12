@@ -22,6 +22,18 @@ exports.copy = {
     test.done();
   },
 
+  testRunDevServerWithModules: function (test) {
+    var task = ctx.newTask(['run', 'myapp'], {
+      root: 'app',
+      modules: ['default.yaml', 'mobile.yaml']
+    });
+
+    var result = task.execute(true);
+    test.equals(result.cmd, 'dev_appserver.py app/app.yaml app/default.yaml app/mobile.yaml');
+
+    test.done();
+  },
+
   testRunDevServerWithClearDatastore: function (test) {
     var task = ctx.newTask(['run', 'myapp'], {
       runFlags: {

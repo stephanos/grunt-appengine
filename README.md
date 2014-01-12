@@ -82,10 +82,10 @@ $ grunt appengine:backend:update
  * 2013-08-13   v0.1.0   changed command order from 'appengine:<target>:<command>' to 'appengine:<command>:<target>'
  * 2013-08-14   v0.1.1   added support for GOPATH configuration
  * 2013-09-11   v0.1.2   removed run flag 'port', added config option 'stdio'
- * 2014-01-12   v0.1.3   added support for updating modules
+ * 2014-01-12   v0.1.3   added support for modules
 
 ---
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Sun Jan 12 2014 12:06:44.*
+*This file was generated on Sun Jan 12 2014 12:51:12.*
