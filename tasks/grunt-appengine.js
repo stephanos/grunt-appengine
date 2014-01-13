@@ -141,9 +141,8 @@ module.exports = function (grunt) {
         }
         var modules = taskOpts['modules'];
         if (modules) {
-          var files = ['app.yaml'].concat(modules);
-          for (var i in files) {
-            cmdAction.push(path.join(appDir, files[i]));
+          for (var i in modules) {
+            cmdAction.push(path.join(appDir, modules[i]));
           }
         } else {
           cmdAction.push(appDir);

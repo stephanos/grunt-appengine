@@ -83,9 +83,10 @@ $ grunt appengine:backend:update
  * 2013-08-14   v0.1.1   added support for GOPATH configuration
  * 2013-09-11   v0.1.2   removed run flag 'port', added config option 'stdio'
  * 2014-01-12   v0.1.3   added support for modules
+ * 2014-01-13   v0.1.4   removed 'app.yaml' from default list of modules
 
 ---
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Sun Jan 12 2014 12:51:12.*
+*This file was generated on Mon Jan 13 2014 18:52:52.*

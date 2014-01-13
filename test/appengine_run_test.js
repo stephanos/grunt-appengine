@@ -29,7 +29,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result.cmd, 'dev_appserver.py app/app.yaml app/default.yaml app/mobile.yaml');
+    test.equals(result.cmd, 'dev_appserver.py app/default.yaml app/mobile.yaml');
 
     test.done();
   },

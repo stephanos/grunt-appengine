@@ -24,7 +24,7 @@ exports.copy = {
 
   testUpdateAppWithModule: function (test) {
     var task = ctx.newTask(['update', 'myapp'], {
-      modules: ['module.yaml']
+      modules: ['app.yaml', 'module.yaml']
     });
 
     var result = task.execute(true);
@@ -40,7 +40,7 @@ exports.copy = {
     });
 
     var result = task.execute(true);
-    test.equals(result.cmd, 'appcfg.py --oauth2 update app/app.yaml app/default.yaml app/mobile.yaml');
+    test.equals(result.cmd, 'appcfg.py --oauth2 update app/default.yaml app/mobile.yaml');
 
     test.done();
   },
