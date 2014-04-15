@@ -1,6 +1,7 @@
 'use strict';
 
-var path = require('path');
+var path  = require('path');
+var spawn = require('win-spawn');
 
 module.exports = function (grunt) {
 
@@ -24,7 +25,6 @@ module.exports = function (grunt) {
 
   function spawned(done, cmd, args, opts) {
     function spawnFunc() {
-      var spawn = require('child_process').spawn;
       spawn(cmd, args || [], opts || {}).on('exit', function (status) {
         done(status === 0);
       });
