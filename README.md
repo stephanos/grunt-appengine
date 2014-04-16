@@ -57,21 +57,21 @@ All options are optional.
 **Running the dev server**
 
 ```shell
-$ grunt appengine:frontend:run
+$ grunt appengine:run:frontend
 ```
 
 
 **Update the frontend**
 
 ```shell
-$ grunt appengine:frontend:update
+$ grunt appengine:update:frontend
 ```
 
 
 **Update the backend**
 
 ```shell
-$ grunt appengine:backend:update
+$ grunt appengine:update:backend
 ```
 
 ## Release History
@@ -89,4 +89,4 @@ $ grunt appengine:backend:update
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Mon Jan 13 2014 18:52:52.*
+*This file was generated on Wed Apr 16 2014 20:44:56.*

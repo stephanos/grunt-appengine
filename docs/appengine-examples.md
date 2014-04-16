@@ -28,19 +28,19 @@ All options are optional.
 **Running the dev server**
 
 ```shell
-$ grunt appengine:frontend:run
+$ grunt appengine:run:frontend
 ```
 
 
 **Update the frontend**
 
 ```shell
-$ grunt appengine:frontend:update
+$ grunt appengine:update:frontend
 ```
 
 
 **Update the backend**
 
 ```shell
-$ grunt appengine:backend:update
+$ grunt appengine:update:backend
 ```
