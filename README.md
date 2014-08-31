@@ -3,6 +3,8 @@
 > Grunt task for running and managing App Engine
 
 
+**Not actively maintained anymore. Should work well anyway. Still accepting PRs.**
+
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
