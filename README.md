@@ -42,7 +42,7 @@ appengine: {
     }
   },
   frontend: {
-		root: 'frontend/'
+	  root: 'frontend/',
     options: {
       manageFlags: {
         version: '<%= pkg.version %>',
