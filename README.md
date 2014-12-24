@@ -41,9 +41,21 @@ appengine: {
       port: 8080
     }
   },
-  
   frontend: {
-		root: 'frontend/'
+	  root: 'frontend/',
+    options: {
+      manageFlags: {
+        version: '<%= pkg.version %>',
+      }
+    }
+  },
+  staging: {
+    root: 'frontend/',
+    options: {
+      manageFlags: {
+        application: 'my-app-staging'
+      }
+    }
   },
   backend: {
   	root: 'backend/',
@@ -67,6 +79,11 @@ $ grunt appengine:run:frontend
 
 ```shell
 $ grunt appengine:update:frontend
+```
+
+**Update staging
+```shell
+$ grunt appengine:update:staging
 ```
 
 
