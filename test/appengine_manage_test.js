@@ -57,7 +57,7 @@ exports.copy = {
   testUpdateWithCustomVersion: function (test) {
     var task = ctx.newTask(['update', 'myapp'], {
       manageFlags: {
-        version: '1-0'
+        version: '1.0'
       }
     });
 
