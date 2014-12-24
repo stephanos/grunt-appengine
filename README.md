@@ -3,8 +3,6 @@
 > Grunt task for running and managing App Engine
 
 
-**Not actively maintained anymore. Should work well anyway. Still accepting PRs.**
-
 
 ## Getting Started
 This plugin requires Grunt `~0.4.0`
@@ -41,21 +39,9 @@ appengine: {
       port: 8080
     }
   },
+  
   frontend: {
-	  root: 'frontend/',
-    options: {
-      manageFlags: {
-        version: '<%= pkg.version %>',
-      }
-    }
-  },
-  staging: {
-    root: 'frontend/',
-    options: {
-      manageFlags: {
-        application: 'my-app-staging'
-      }
-    }
+		root: 'frontend/'
   },
   backend: {
   	root: 'backend/',
@@ -81,11 +67,6 @@ $ grunt appengine:run:frontend
 $ grunt appengine:update:frontend
 ```
 
-**Update staging
-```shell
-$ grunt appengine:update:staging
-```
-
 
 **Update the backend**
 
@@ -103,9 +84,11 @@ $ grunt appengine:update:backend
  * 2013-09-11   v0.1.2   removed run flag 'port', added config option 'stdio'
  * 2014-01-12   v0.1.3   added support for modules
  * 2014-01-13   v0.1.4   removed 'app.yaml' from default list of modules
+ * 2014-04-16   v0.1.5   support for Windows
+ * 2014-12-24   v0.1.6   added ability to pass in task target specific options
 
 ---
 
 Task submitted by [Stephan Behnke](http://stephanbehnke.com)
 
-*This file was generated on Wed Apr 16 2014 20:44:56.*
+*This file was generated on Wed Dec 24 2014 10:41:58.*
