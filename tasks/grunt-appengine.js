@@ -89,10 +89,12 @@ module.exports = function (grunt) {
 
       var gruntTaskTargetProfileOpts = grunt.config([name, target, profile]) || {};
       var gruntTaskTargetOpts = grunt.config([name, target]) || {};
+      var gruntTastTargetOptsExtra = gruntTaskTargetOpts.options || {};
       var gruntTaskOpts = grunt.config([name, 'options']) || {};
       var taskOpts = _.defaults(
         gruntTaskTargetProfileOpts,
         gruntTaskTargetOpts,
+        gruntTastTargetOptsExtra,
         gruntTaskOpts,
         defaultOpts
       );
@@ -113,6 +115,7 @@ module.exports = function (grunt) {
       var taskFlagsOpts = _.defaults(
         gruntTaskTargetProfileOpts[optsFlagsName] || {},
         gruntTaskTargetOpts[optsFlagsName] || {},
+        gruntTastTargetOptsExtra[optsFlagsName] || {},
         gruntTaskOpts[optsFlagsName] || {},
         defaultOpts[optsFlagsName] || {}
       );
@@ -158,6 +161,10 @@ module.exports = function (grunt) {
         if (attrval === true) {
           cmdFlags.push('--' + attrname);
         } else {
+          //TODO: break out to attrubuteValidator function 
+          if (attrname === 'version') {
+            attrval = attrval.replace(/\./g, '-');
+          }
           cmdFlags.push('--' + attrname + '=' + attrval);
         }
       }
