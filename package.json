@@ -25,8 +25,8 @@
     "node": ">=0.8.0"
   },
   "dependencies": {
-    "async":      "~0.2.0",
-    "win-spawn":  "2.0.0"
+    "async": "~0.2.0",
+    "win-spawn": "2.0.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.2",
@@ -35,7 +35,7 @@
     "grunt": "~0.4.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin",
